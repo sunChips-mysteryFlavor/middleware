@@ -12,7 +12,6 @@ module.exports = {
       headers: { Authorization: req.encryptedKey },
       data: req.body,
     };
-    console.log(axiosObj);
     return axios(axiosObj);
   },
   // getAll: (url, extension) =>
