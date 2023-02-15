@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const ghAuth = require('./middleware/ghAuth.js');
+const accessToken = require('./middleware/accessTokenAuth.js');
 
 const products = require('./routes/products.js');
 const reviews = require('./routes/reviews.js');
@@ -20,10 +21,11 @@ app.use(morgan('dev'));
 
 //Github Authorization
 app.use(ghAuth);
+app.use(accessToken);
 
 // Routers
-app.use('/products', products);
-// app.use('/reviews', AUTH_FUNCTION ,reviews);
+app.use('/products' ,products);
+// app.use('/reviews' ,reviews);
 // app.use('/qa', qa);
 // app.use('/cart', cart);
 // app.use('/interactions', interactions);
