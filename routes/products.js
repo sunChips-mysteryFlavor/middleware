@@ -4,8 +4,6 @@ const accessTokenAuth = require('../helper/accessTokenAuth');
 
 const router = express.Router();
 
-const url = ``;
-
 //Products
 router.get('/', (req, res) => {
   const encodedAccessKey = accessTokenAuth(req.header.Authorization);
