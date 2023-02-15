@@ -1,6 +1,6 @@
 const express = require('express');
 const controllers = require('../controller');
-const accessTokenAuth = require('../helper/accessTokenAuth');
+//const accessTokenAuth = require('../helper/accessTokenAuth');
 
 const router = express.Router();
 
@@ -8,9 +8,10 @@ const url = ``;
 
 //Products
 router.get('/', (req, res) => {
-  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
+  console.log('encrypt', req.encryptedKey);
+
   controllers
-    .getAll(url, req.query, encodedAccessKey)
+    .getAll(url, req.params, req.encryptedKey)
     .then((response) => {
       res.send(response.data);
     })
@@ -18,9 +19,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:product_id', (req, res) => {
-  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
   controllers
-    .getAll(url, req.query, encodedAccessKey)
+    .getAll(url, req.query, req.encryptedKey)
     .then((response) => {
       res.send(response.data);
     })
@@ -28,9 +28,8 @@ router.get('/:product_id', (req, res) => {
 });
 
 router.get('/:product_id/styles', (req, res) => {
-  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
   controllers
-    .getAll(url, req.query, encodedAccessKey)
+    .getAll(url, req.query, req.encryptedKey)
     .then((response) => {
       res.send(response.data);
     })
@@ -38,9 +37,8 @@ router.get('/:product_id/styles', (req, res) => {
 });
 
 router.get('/:product_id/related', (req, res) => {
-  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
   controllers
-    .getAll(url, req.query, encodedAccessKey)
+    .getAll(url, req.query, req.encryptedKey)
     .then((response) => {
       res.send(response.data);
     })
