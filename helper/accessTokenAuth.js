@@ -13,11 +13,7 @@ function encrypt(token) {
   return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
 }
 
-const encrypted = encrypt('Hello World!');
-console.log('Encrypted Text: ' + encrypted.encryptedData);
-module.exports = {
-  encryptedToken: encrypted.encryptedData,
-};
+module.exports = encrypt;
 //DECIPHER
 
 // const crypto = require('crypto');

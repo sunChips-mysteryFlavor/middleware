@@ -1,5 +1,6 @@
 const express = require('express');
 const controllers = require('../controller');
+const accessTokenAuth = require('../helper/accessTokenAuth');
 
 const router = express.Router();
 
@@ -7,24 +8,42 @@ const url = ``;
 
 //Products
 router.get('/', (req, res) => {
-  // controllers
-  //   .getAll(url, req.query, req.headers.authorization)
-  //   .then((response) => {
-  //     res.send(response.data);
-  //   });
+  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
+  controllers
+    .getAll(url, req.query, encodedAccessKey)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => new Error(err));
 });
 
 router.get('/:product_id', (req, res) => {
-  controllers.getAll(`products/`, req.query, headers).then((response) => {
-    res.send(response.data);
-  });
+  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
+  controllers
+    .getAll(url, req.query, encodedAccessKey)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => new Error(err));
 });
 
 router.get('/:product_id/styles', (req, res) => {
-  console.log('hit styles', req.query);
+  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
+  controllers
+    .getAll(url, req.query, encodedAccessKey)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => new Error(err));
 });
 
 router.get('/:product_id/related', (req, res) => {
-  console.log('hit related', req.query);
+  const encodedAccessKey = accessTokenAuth(req.header.Authorization);
+  controllers
+    .getAll(url, req.query, encodedAccessKey)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => new Error(err));
 });
 module.exports = router;
