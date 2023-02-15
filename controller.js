@@ -3,11 +3,11 @@
 const axios = require('axios');
 
 module.exports = {
-  getAll: (url, extension) =>
+  getAll: (url, extension, auth) =>
     axios({
       method: 'get',
       url: url + extension,
-      headers: headers,
+      headers: {Authorization : auth},
     }),
   create: (url, extension, param) =>
     axios({
@@ -22,4 +22,20 @@ module.exports = {
       url: url + extension,
       headers: headers,
     }),
+
+
+  global: (url,req) => {
+    const query = Object
+      .keys(req.query)
+      .map((prop) => `${req.query}=${req.query[prop]}&`)
+      .join('')
+
+    let axiosObj ={
+      method: req.method,
+      url: url + req.path + query,
+      headers: {Authorization : req.encryptedKey},
+      data: req.body,
+    }
+    return axios(axiosObj)
+  }
 };

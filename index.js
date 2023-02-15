@@ -26,7 +26,7 @@ app.use(accessToken);
 // Routers
 app.use('/products' ,products);
 // app.use('/reviews' ,reviews);
-// app.use('/qa', qa);
+app.use('/qa', qa);
 // app.use('/cart', cart);
 // app.use('/interactions', interactions);
 
