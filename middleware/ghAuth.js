@@ -1,23 +1,14 @@
-//https://api.github.com/orgs/hackreactor/teams/students-rfp2212
-/*
-    Authorization: `test ${authKey}`
-*/
-/*
-    If 200 auth
-    else (404) 420 go touch grass
-*/
-
 const axios = require('axios');
 
-module.exports.authCheck = (req, res, next) => {
-  console.log('auth key', req);
+module.exports = (req, res, next) => {
   axios
     .get('https://api.github.com/orgs/hackreactor/teams/students-rfp2212', {
       headers: {
-        Authorization: `token ${req.headers.Authorization}`,
+        Authorization: `token ${req.headers.authorization}`,
       },
     })
     .then((res) => {
+      console.log('Authenticated')
       return next();
     })
     .catch((err) => {
@@ -27,13 +18,3 @@ module.exports.authCheck = (req, res, next) => {
       return next(err);
     });
 };
-
-// function isAuth(req, res, next) {
-//     const auth = req.headers.authorization;
-//     if (auth === 'password') {
-//       next();
-//     } else {
-//       res.status(401);
-//       res.send('Access forbidden');
-//     }
-// }
