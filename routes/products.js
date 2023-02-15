@@ -4,44 +4,55 @@ const controllers = require('../controller');
 
 const router = express.Router();
 
-const url = ``;
-
+const url = 'http://localhost:3020';
 //Products
-router.get('/', (req, res) => {
-  console.log('encrypt', req.encryptedKey);
 
+router.get('*', (req, res) => {
   controllers
-    .getAll(url, req.params, req.encryptedKey)
+    .global(url, req)
     .then((response) => {
       res.send(response.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => {
+      res.status(500).send(new Error(err));
+    });
 });
 
-router.get('/:product_id', (req, res) => {
-  controllers
-    .getAll(url, req.query, req.encryptedKey)
-    .then((response) => {
-      res.send(response.data);
-    })
-    .catch((err) => new Error(err));
-});
+// router.get('/', (req, res) => {
+//   console.log('encrypt', req.encryptedKey);
 
-router.get('/:product_id/styles', (req, res) => {
-  controllers
-    .getAll(url, req.query, req.encryptedKey)
-    .then((response) => {
-      res.send(response.data);
-    })
-    .catch((err) => new Error(err));
-});
+//   controllers
+//     .getAll(url, req.params, req.encryptedKey)
+//     .then((response) => {
+//       res.send(response.data);
+//     })
+//     .catch((err) => new Error(err));
+// });
 
-router.get('/:product_id/related', (req, res) => {
-  controllers
-    .getAll(url, req.query, req.encryptedKey)
-    .then((response) => {
-      res.send(response.data);
-    })
-    .catch((err) => new Error(err));
-});
+// router.get('/:product_id', (req, res) => {
+//   controllers
+//     .getAll(url, req.query, req.encryptedKey)
+//     .then((response) => {
+//       res.send(response.data);
+//     })
+//     .catch((err) => new Error(err));
+// });
+
+// router.get('/:product_id/styles', (req, res) => {
+//   controllers
+//     .getAll(url, req.query, req.encryptedKey)
+//     .then((response) => {
+//       res.send(response.data);
+//     })
+//     .catch((err) => new Error(err));
+// });
+
+// router.get('/:product_id/related', (req, res) => {
+//   controllers
+//     .getAll(url, req.query, req.encryptedKey)
+//     .then((response) => {
+//       res.send(response.data);
+//     })
+//     .catch((err) => new Error(err));
+// });
 module.exports = router;
