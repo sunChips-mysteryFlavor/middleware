@@ -2,7 +2,7 @@ const crypto = require('crypto');
 
 const algorithm = 'aes-256-cbc';
 
-const key ='rrMbJsGJ4Pxxs0SVn8lfFzzeIhp8LQEJ';
+const key = 'rrMbJsGJ4Pxxs0SVn8lfFzzeIhp8LQEJ';
 
 const iv = crypto.randomBytes(16);
 
@@ -15,11 +15,11 @@ module.exports = (req, res, next) => {
 
   req.encryptedKey = {
     iv: iv,
-    encryptedData: encrypted
+    encryptedData: encrypted,
   };
 
   next();
-}
+};
 
 //DECIPHER
 // //----
