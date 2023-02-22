@@ -4,7 +4,7 @@ const controllers = require('../controller');
 
 const router = express.Router();
 
-const url = 'http://localhost:3020/products';
+const url = 'http://localhost:3020';
 //Products
 
 router.get('*', (req, res) => {

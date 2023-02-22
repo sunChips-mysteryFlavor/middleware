@@ -8,7 +8,7 @@ module.exports = {
       method: req.method,
       baseURL: url,
       url: req.path,
-      params: req.params,
+      params: req.query,
       headers: {
         authorization:
           req.encryptedKey.iv.toString('base64') +
@@ -16,7 +16,7 @@ module.exports = {
           req.encryptedKey.encryptedData,
       },
       data: req.body,
-    };
+    };``
     console.log(axiosObj);
     return axios(axiosObj);
   },

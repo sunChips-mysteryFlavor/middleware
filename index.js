@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
-
+const dotenv = require('dotenv').config()
 const ghAuth = require('./middleware/ghAuth.js');
 const accessToken = require('./middleware/accessTokenAuth.js');
 
@@ -25,10 +25,10 @@ app.use(accessToken);
 
 // Routers
 app.use('/products' ,products);
-// app.use('/reviews' ,reviews);
+app.use('/reviews' ,reviews);
 app.use('/qa', qa);
 // app.use('/cart', cart);
 // app.use('/interactions', interactions);
 
-app.listen(3000);
-console.log(`Listening at http://localhost:3000`);
+app.listen(process.env.SERVER_PORT);
+console.log(`Listening at port ${process.env.SERVER_PORT}`);
