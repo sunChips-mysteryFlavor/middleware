@@ -4,7 +4,7 @@ const controllers = require('../controller');
 
 const router = express.Router();
 
-const url = process.env.MODULE_PRODUCTS_URL_DEV;
+const url = process.env.MODULE_PRODUCTS_URL_PROD;
 //Products
 
 router.get('*', (req, res) => {
