@@ -4,7 +4,7 @@ const controllers = require('../controller');
 
 const router = express.Router();
 
-const url = 'http://localhost:3020';
+const url = process.env.MODULE_PRODUCTS_URL_DEV;
 //Products
 
 router.get('*', (req, res) => {

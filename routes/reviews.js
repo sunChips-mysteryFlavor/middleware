@@ -3,7 +3,7 @@ const controllers = require('../controller');
 
 const router = express.Router();
 
-const url = 'http://localhost:3022'; //ur module default url
+const url = process.env.MODULE_REVIEWS_URL_DEV; //ur module default url
 
 // Reviews
 router.get('*', (req, res) => {

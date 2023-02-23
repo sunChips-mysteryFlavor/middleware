@@ -1,15 +1,15 @@
 const crypto = require('crypto');
 
-const algorithm = 'aes-256-cbc';
+const algorithm = process.env.MW_AUTH_ALGORITHM;
 
-const key = 'rrMbJsGJ4Pxxs0SVn8lfFzzeIhp8LQEJ';
+const key = process.env.MW_AUTH_KEY;
 
 const iv = crypto.randomBytes(16);
 
 //Encrypt
 module.exports = (req, res, next) => {
   let cipher = crypto.createCipheriv(algorithm, key, iv);
-  let encrypted = cipher.update(req.headers.authorization, 'utf8', 'hex');
+  let encrypted = cipher.update(process.env.MW_AUTH_SECRET, 'utf8', 'hex');
   encrypted += cipher.final('hex');
 
   req.encryptedKey = {
