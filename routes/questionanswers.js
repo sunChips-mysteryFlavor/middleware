@@ -4,7 +4,7 @@ const controllers = require('../controller');
 const router = express.Router();
 
 //port 3021
-const url = process.env.MODULE_QA_URL_DEV;
+const url = process.env.MODULE_QA_URL_PROD;
 
 //Question & Answers
 router.get('*', (req, res) => {
