@@ -2,7 +2,7 @@ const axios = require('axios');
 
 module.exports = (req, res, next) => {
   axios
-    .get('https://api.github.com/orgs/hackreactor/teams/students-rfp2212', {
+    .get(process.env.MW_GHAUTH_URL, {
       headers: {
         Authorization: `token ${req.headers.authorization}`,
       },

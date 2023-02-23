@@ -4,11 +4,12 @@ const controllers = require('../controller');
 const router = express.Router();
 
 //port 3021
-const url = 'http://localhost:3021';
+const url = process.env.MODULE_QA_URL_DEV;
 
 //Question & Answers
 router.get('*', (req, res) => {
-  controllers.global(url, req)
+  controllers
+    .global(url, req)
     .then((response) => {
       res.send(response.data);
     })
